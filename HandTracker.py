@@ -130,9 +130,9 @@ class HandTracker:
             # Batch reshaping if lm_2 is True
             for o in self.lm_net.outputs.keys():
                 print(f"Output blob: {o} - shape: {self.lm_net.outputs[o].shape}")
-                self.lm_score = "Identity_1"
-                self.lm_handedness = "Identity_2"
-                self.lm_landmarks = "Identity_dense/BiasAdd/Add"
+            self.lm_score = "Identity_1"
+            self.lm_handedness = "Identity_2"
+            self.lm_landmarks = "Identity_dense/BiasAdd/Add"
             print("Loading landmark model to the plugin")
             self.lm_exec_net = self.ie.load_network(network=self.lm_net, num_requests=1, device_name=lm_device)
             self.lm_infer_time_cumul = 0
@@ -394,15 +394,15 @@ if __name__ == "__main__":
     parser.add_argument('-g', '--gesture', action="store_true", 
                         help="enable gesture recognition")
     parser.add_argument("--pd_m", default="models/palm_detection_FP32.xml", type=str,
-                        help="Path to an .xml file for palm detection model (dfault=%(default)s)")
+                        help="Path to an .xml file for palm detection model (default=%(default)s)")
     parser.add_argument("--pd_device", default='CPU', type=str,
-                        help="Target device for the palm detection model (dfault=%(default)s)")  
+                        help="Target device for the palm detection model (default=%(default)s)")  
     parser.add_argument('--no_lm', action="store_true", 
                         help="only the palm detection model is run, not the hand landmark model")
     parser.add_argument("--lm_m", default="models/hand_landmark_FP32.xml", type=str,
-                        help="Path to an .xml file for landmark model (dfault=%(default)s)")
+                        help="Path to an .xml file for landmark model (default=%(default)s)")
     parser.add_argument("--lm_device", default='CPU', type=str,
-                        help="Target device for the landmark regression model (dfault=%(default)s)")
+                        help="Target device for the landmark regression model (default=%(default)s)")
     parser.add_argument('-c', '--crop', action="store_true", 
                         help="center crop frames to a square shape before feeding palm detection model")
 
