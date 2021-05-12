@@ -48,7 +48,7 @@ You can find the models *palm_detector.blob* and *hand_landmark.blob* under the 
 3) From DEST_DIR, run the tflite2tensorflow container:  ```./docker_tflite2tensorflow.sh```
 4) From the running container: 
 ```
-cd resources/models
+cd workdir
 ./convert_models.sh
 ```
 The *convert_models.sh* converts the tflite models in tensorflow (.pb), then converts the pb file into Openvino IR format (.xml and .bin). By default, the precision used is FP32. To generate in FP16 precision, run ```./convert_models.sh FP16```
