@@ -253,7 +253,7 @@ class HandTracker:
                 dst = np.array([ (x, y) for x,y in region.rect_points[1:]], dtype=np.float32) # region.rect_points[0] is left bottom point !
                 mat = cv2.getAffineTransform(src, dst)
                 lm_xy = np.expand_dims(np.array([(l[0], l[1]) for l in region.landmarks]), axis=0)
-                lm_xy = np.squeeze(cv2.transform(lm_xy, mat)).astype(np.int)
+                lm_xy = np.squeeze(cv2.transform(lm_xy, mat)).astype(np.int32)
                 list_connections = [[0, 1, 2, 3, 4], 
                                     [0, 5, 6, 7, 8], 
                                     [5, 9, 10, 11, 12],
